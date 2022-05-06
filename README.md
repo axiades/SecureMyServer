@@ -63,9 +63,6 @@ SecureMyServer/
   ├── script/
   │   ├── [Various script .sh files (main part of the script)]
   │
-  ├── updates/
-  │   ├── [Various service update .sh files]
-  │
   ├── LICENSE
   ├── README.md
   ├── install.sh
