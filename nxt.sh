@@ -60,7 +60,7 @@ fi
 3)
 dialog_info "Updating Secure Script"
 update_script
-bash nxt.sh
+bash start.sh
 ;;
 
 4)

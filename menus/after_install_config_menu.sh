@@ -48,7 +48,7 @@ case $CHOICE in
 ;;
 
 5)
-  bash /root/SecureMyServer/nxt.sh
+  bash /root/SecureMyServer/start.sh
 ;;
 
 6)

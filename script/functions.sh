@@ -168,7 +168,7 @@ continue_to_menu() {
   echo "Exit"
   exit
   fi
-  bash /root/SecureMyServer/nxt.sh
+  bash /root/SecureMyServer/start.sh
 }
 
 continue_or_exit() {
