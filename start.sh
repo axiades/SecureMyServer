@@ -23,10 +23,9 @@ MENU="\n Choose one of the following options: \n \n"
 
 OPTIONS=(1 "Install Secure Version: ${GIT_LOCAL_FILES_HEAD} - ${GIT_LOCAL_FILES_HEAD_LAST_COMMIT}"
          2 "After Installation configuration"
-         3 "Update Secure Installation"
-         4 "Update Secure Script Code Base"
-         5 "Services Options"
-         6 "Exit")
+         3 "Update Secure Script Code Base"
+         4 "Services Options"
+         4 "Exit")
 
 CHOICE=$(dialog --clear \
                 --nocancel \
@@ -59,21 +58,12 @@ fi
 ;;
 
 3)
-if [[ ${SMS_IS_INSTALLED} == '1' ]]; then
-    update_all_services
-else
-    echo "You have to install the Secure to run the services update!"
-    continue_to_menu
-fi
-;;
-
-4)
 dialog_info "Updating Secure Script"
 update_script
 bash start.sh
 ;;
 
-5)
+4)
 if [[ ${SMS_IS_INSTALLED} == '1' ]]; then
     menu_options_services
 else
@@ -82,7 +72,7 @@ else
 fi
 ;;
 
-6)
+5)
 echo "Exit"
 exit
 ;;
