@@ -32,15 +32,6 @@ Login with:
 - `su -i`
 otherwise the script will throw multiple errors!
 
-## INFORMATION ##
-
-This Script is With:
-Fail2Ban
-OpenSSL/SSH Hardening
-Kernel-Hardening
-
-Lite-Version is Without the Options From the Full-Version but have the Safety Includes with Kernel-Hardening, OpenSSL/SSH Hardening & Fail2Ban
-
 Install with [git]:
 - `cd /root/; apt update; apt install git -y; git clone https://github.com/axiades/SecureMyServer.git; cd SecureMyServer; bash start.sh`
 
@@ -91,7 +82,7 @@ Wiki is Cooming..
 
 ## Authors
 
-**Marcel Gössel**
+**Marcel Eichlohn**
 
 - <https://github.com/shoujii>
 
