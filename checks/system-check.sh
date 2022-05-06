@@ -27,7 +27,7 @@ else
   echo "${error} sysctl.conf does NOT exist" >>"${failed_checks_log}"
 fi
 
-if [ -e /root/SecureMySrv/login_information.txt ]; then
+if [ -e /root/SecureMyServer/login_information.txt ]; then
   passed_system_checks=$((passed_system_checks + 1))
 else
   failed_system_checks=$((failed_system_checks + 1))
@@ -38,6 +38,6 @@ echo "System:"
 echo "${ok} ${passed_system_checks} checks passed!"
 
 if [[ "${failed_system_checks}" != "0" ]]; then
-  echo "${error} ${failed_system_checks} check/s failed! Please check /root/SecureMySrv/logs/failed_checks.log or consider a new installation!"
+  echo "${error} ${failed_system_checks} check/s failed! Please check /root/SecureMyServer/logs/failed_checks.log or consider a new installation!"
 fi
 }

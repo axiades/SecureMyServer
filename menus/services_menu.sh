@@ -3,7 +3,7 @@
 
 menu_options_services() {
 
-source /root/SecureMySrv/configs/sources.cfg
+source /root/SecureMyServer/configs/sources.cfg
 set_logs
 
 HEIGHT=40
@@ -35,7 +35,7 @@ menu_options_openssh
 ;;
 
 2)
-bash /root/SecureMySrv/nxt.sh
+bash /root/SecureMyServer/nxt.sh
 ;;
 
 3)

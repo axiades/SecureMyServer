@@ -8,11 +8,11 @@ trap error_exit ERR
 mkdir -p /etc/ssh
 install_packages "libpam-dev openssh-server"
 
-cp /root/SecureMySrv/configs/sshd_config /etc/ssh/sshd_config
-cp /root/SecureMySrv/includes/issue /etc/issue
-cp /root/SecureMySrv/includes/issue.net /etc/issue.net
+cp /root/SecureMyServer/configs/sshd_config /etc/ssh/sshd_config
+cp /root/SecureMyServer/includes/issue /etc/issue
+cp /root/SecureMyServer/includes/issue.net /etc/issue.net
 
-array=($(cat "/root/SecureMySrv/configs/blocked_ports.conf"))
+array=($(cat "/root/SecureMyServer/configs/blocked_ports.conf"))
 printf -v array_str -- ',,%q' "${array[@]}"
 while true
 do
@@ -26,19 +26,19 @@ RANDOM_SSH_PORT="$(($RANDOM % 1023))"
 done
 
 sed_replace_word "^Port 22" "Port $SSH_PORT" "/etc/ssh/sshd_config"
-echo "$SSH_PORT" >> /root/SecureMySrv/configs/blocked_ports.conf
+echo "$SSH_PORT" >> /root/SecureMyServer/configs/blocked_ports.conf
 
-echo "#------------------------------------------------------------------------------#" >> /root/SecureMySrv/login_information.txt
-echo "#SSH_PORT: ${SSH_PORT}" >> /root/SecureMySrv/login_information.txt
-echo "#------------------------------------------------------------------------------#" >> /root/SecureMySrv/login_information.txt
-echo "" >> /root/SecureMySrv/login_information.txt
+echo "#------------------------------------------------------------------------------#" >> /root/SecureMyServer/login_information.txt
+echo "#SSH_PORT: ${SSH_PORT}" >> /root/SecureMyServer/login_information.txt
+echo "#------------------------------------------------------------------------------#" >> /root/SecureMyServer/login_information.txt
+echo "" >> /root/SecureMyServer/login_information.txt
 
 SSH_PASS=$(password)
 
-echo "#------------------------------------------------------------------------------#" >> /root/SecureMySrv/login_information.txt
-echo "#SSH_PASS: ${SSH_PASS}" >> /root/SecureMySrv/login_information.txt
-echo "#------------------------------------------------------------------------------#" >> /root/SecureMySrv/login_information.txt
-echo "" >> /root/SecureMySrv/login_information.txt
+echo "#------------------------------------------------------------------------------#" >> /root/SecureMyServer/login_information.txt
+echo "#SSH_PASS: ${SSH_PASS}" >> /root/SecureMyServer/login_information.txt
+echo "#------------------------------------------------------------------------------#" >> /root/SecureMyServer/login_information.txt
+echo "" >> /root/SecureMyServer/login_information.txt
 
 ssh-keygen -f ~/ssh.key -t ed25519 -N ${SSH_PASS} 
 mkdir -p ~/.ssh && chmod 700 ~/.ssh

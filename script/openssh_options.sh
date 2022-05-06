@@ -17,10 +17,10 @@ rm -rf ~/.ssh/*
 rm /root/ssh_privatekey.txt
 
 NEW_SSH_PASS=$(password)
-echo "#------------------------------------------------------------------------------#" >> /root/SecureMySrv/login_information.txt
-echo "#NEW_SSH_PASS: $NEW_SSH_PASS" >> /root/SecureMySrv/login_information.txt
-echo "#------------------------------------------------------------------------------#" >> /root/SecureMySrv/login_information.txt
-echo "" >> /root/SecureMySrv/login_information.txt
+echo "#------------------------------------------------------------------------------#" >> /root/SecureMyServer/login_information.txt
+echo "#NEW_SSH_PASS: $NEW_SSH_PASS" >> /root/SecureMyServer/login_information.txt
+echo "#------------------------------------------------------------------------------#" >> /root/SecureMyServer/login_information.txt
+echo "" >> /root/SecureMyServer/login_information.txt
 
 ssh-keygen -f ~/ssh.key -t ed25519 -N $NEW_SSH_PASS
 mkdir -p ~/.ssh && chmod 700 ~/.ssh

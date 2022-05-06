@@ -4,25 +4,25 @@
 update_script() {
 
 mkdir -p /opt/backup_sms_server
-if [ -d "/root/SecureMySrv/logs/" ]; then
+if [ -d "/root/SecureMyServer/logs/" ]; then
   mkdir -p /opt/backup_sms_server/logs
-  mv /root/SecureMySrv/logs/* /opt/backup_sms_server/logs/
+  mv /root/SecureMyServer/logs/* /opt/backup_sms_server/logs/
 fi
 
-if [ -e /root/SecureMySrv/login_information.txt ]; then
-  mv /root/SecureMySrv/login_information.txt /opt/backup_sms_server/
+if [ -e /root/SecureMyServer/login_information.txt ]; then
+  mv /root/SecureMyServer/login_information.txt /opt/backup_sms_server/
 fi
 
-if [ -e /root/SecureMySrv/ssh_privatekey.txt ]; then
-  mv /root/SecureMySrv/ssh_privatekey.txt /opt/backup_sms_server/
+if [ -e /root/SecureMyServer/ssh_privatekey.txt ]; then
+  mv /root/SecureMyServer/ssh_privatekey.txt /opt/backup_sms_server/
 fi
 
-if [ -e /root/SecureMySrv/installation_times.txt ]; then
-  mv /root/SecureMySrv/installation_times.txt /opt/backup_sms_server/
+if [ -e /root/SecureMyServer/installation_times.txt ]; then
+  mv /root/SecureMyServer/installation_times.txt /opt/backup_sms_server/
 fi
 
-if [ -e /root/SecureMySrv/configs/userconfig.cfg ]; then
-  mv /root/SecureMySrv/configs/userconfig.cfg /opt/backup_sms_server/
+if [ -e /root/SecureMyServer/configs/userconfig.cfg ]; then
+  mv /root/SecureMyServer/configs/userconfig.cfg /opt/backup_sms_server/
 fi
 
 local_branch=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
@@ -43,23 +43,23 @@ elif git merge-base --is-ancestor HEAD $remote_branch; then
 fi
 
 if [ -d "/opt/backup_sms_server/logs/" ]; then
-  mv /opt/backup_sms_server/logs/* /root/SecureMySrv/logs/
+  mv /opt/backup_sms_server/logs/* /root/SecureMyServer/logs/
 fi
 
 if [ -e /opt/backup_sms_server/login_information.txt ]; then
-  mv /opt/backup_sms_server/login_information.txt /root/SecureMySrv/
+  mv /opt/backup_sms_server/login_information.txt /root/SecureMyServer/
 fi
 
 if [ -e /opt/backup_sms_server/ssh_privatekey.txt ]; then
-  mv /opt/backup_sms_server/ssh_privatekey.txt /root/SecureMySrv/
+  mv /opt/backup_sms_server/ssh_privatekey.txt /root/SecureMyServer/
 fi
 
 if [ -e /opt/backup_sms_server/installation_times.txt ]; then
-  mv /opt/backup_sms_server/installation_times.txt /root/SecureMySrv/
+  mv /opt/backup_sms_server/installation_times.txt /root/SecureMyServer/
 fi
 
 if [ -e /opt/backup_sms_server/userconfig.cfg ]; then
-  mv /opt/backup_sms_server/userconfig.cfg /root/SecureMySrv/configs/
+  mv /opt/backup_sms_server/userconfig.cfg /root/SecureMyServer/configs/
 fi
 
   rm -R /opt/backup_sms_server/

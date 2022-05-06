@@ -1,7 +1,7 @@
 #!/bin/bash
 #Please check the license provided with the script!
 
-source /root/SecureMySrv/configs/sources.cfg
+source /root/SecureMyServer/configs/sources.cfg
 
 install_start=`date +%s`
 
@@ -12,7 +12,7 @@ check_system_before_start
 
 confighelper_userconfig
 
-mkdir /root/SecureMySrv/sources
+mkdir /root/SecureMyServer/sources
 progress_gauge "0" "Installing System..."
 install_system
 
@@ -28,10 +28,10 @@ install_fail2ban
 install_end=`date +%s`
 runtime=$((install_end-install_start))
 
-sed -i 's/SMS_IS_INSTALLED="0"/SMS_IS_INSTALLED="1"/' /root/SecureMySrv/configs/userconfig.cfg
+sed -i 's/SMS_IS_INSTALLED="0"/SMS_IS_INSTALLED="1"/' /root/SecureMyServer/configs/userconfig.cfg
 
 date=$(date +"%d-%m-%Y")
-sed -i 's/SMS_INSTALL_DATE="0"/SMS_INSTALL_DATE="'${date}'"/' /root/SecureMySrv/configs/userconfig.cfg
-sed -i 's/SMS_INSTALL_TIME_SECONDS="0"/SMS_INSTALL_TIME_SECONDS="'${runtime}'"/' /root/SecureMySrv/configs/userconfig.cfg
+sed -i 's/SMS_INSTALL_DATE="0"/SMS_INSTALL_DATE="'${date}'"/' /root/SecureMyServer/configs/userconfig.cfg
+sed -i 's/SMS_INSTALL_TIME_SECONDS="0"/SMS_INSTALL_TIME_SECONDS="'${runtime}'"/' /root/SecureMyServer/configs/userconfig.cfg
 
 start_after_install

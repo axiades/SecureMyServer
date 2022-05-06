@@ -12,8 +12,8 @@ WIDTH=80
 CONFIG_COMPLETED="1"
 
 GIT_LOCAL_FILES_HEAD=$(git rev-parse --short HEAD)
-rm -rf /root/SecureMySrv/configs/userconfig.cfg
-cat >> /root/SecureMySrv/configs/userconfig.cfg <<END
+rm -rf /root/SecureMyServer/configs/userconfig.cfg
+cat >> /root/SecureMyServer/configs/userconfig.cfg <<END
 #-----------------------------------------------------------#
 ############### Config File from Confighelper ###############
 #-----------------------------------------------------------#
@@ -30,7 +30,7 @@ TIMEZONE="Europe/Berlin"
 #-----------------------------------------------------------#
 END
 
-dialog --title "Userconfig" --exit-label "ok" --textbox /root/SecureMySrv/configs/userconfig.cfg 50 250
+dialog --title "Userconfig" --exit-label "ok" --textbox /root/SecureMyServer/configs/userconfig.cfg 50 250
 clear
 
 CHOICE_HEIGHT=2

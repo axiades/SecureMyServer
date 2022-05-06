@@ -5,12 +5,12 @@ install_system() {
 
 trap error_exit ERR
 
-source /root/SecureMySrv/configs/sources.cfg
+source /root/SecureMyServer/configs/sources.cfg
 
 TIMEZONE_DETECTED=$(wget http://ip-api.com/line/${IPADR}?fields=timezone -q -O -)
 timedatectl set-timezone Europe/Berlin
 
-sed_replace_word "Europe/Berlin" "${TIMEZONE_DETECTED}" "/root/SecureMySrv/configs/userconfig.cfg"
+sed_replace_word "Europe/Berlin" "${TIMEZONE_DETECTED}" "/root/SecureMyServer/configs/userconfig.cfg"
 
 rm /etc/apt/sources.list
 cat > /etc/apt/sources.list <<END
@@ -34,9 +34,9 @@ apt update -y >/dev/null 2>&1
 apt -y upgrade >/dev/null 2>&1
 
 install_packages "dirmngr software-properties-common sudo rkhunter debsecan debsums passwdqc unattended-upgrades needrestart apt-listchanges apache2-utils"
-cp -f /root/SecureMySrv/configs/needrestart.conf /etc/needrestart/needrestart.conf
-cp -f /root/SecureMySrv/configs/20auto-upgrades /etc/apt/apt.conf.d/20auto-upgrades
-cp -f /root/SecureMySrv/configs/50unattended-upgrades /etc/apt/apt.conf.d/50unattended-upgrades
+cp -f /root/SecureMyServer/configs/needrestart.conf /etc/needrestart/needrestart.conf
+cp -f /root/SecureMyServer/configs/20auto-upgrades /etc/apt/apt.conf.d/20auto-upgrades
+cp -f /root/SecureMyServer/configs/50unattended-upgrades /etc/apt/apt.conf.d/50unattended-upgrades
 
 #thanks to https://linuxacademy.com/howtoguides/posts/show/topic/19700-linux-security-and-server-hardening-part1
 cat > /etc/sysctl.conf <<END
