@@ -48,7 +48,7 @@ case $CHOICE in
 ;;
 
 5)
-  bash /root/SecureMySrv/start.sh
+  bash /root/SecureMySrv/nxt.sh
 ;;
 
 6)

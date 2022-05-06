@@ -35,7 +35,7 @@ menu_options_openssh
 ;;
 
 2)
-bash /root/SecureMySrv/start.sh
+bash /root/SecureMySrv/nxt.sh
 ;;
 
 3)

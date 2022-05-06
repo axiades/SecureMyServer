@@ -153,6 +153,7 @@ error_exit() {
   USED_OS=$(lsb_release -ic)
   echo "Your used OS is: $USED_OS"
   echo ""
+  echo ""
   exit
 }
 
@@ -167,7 +168,7 @@ continue_to_menu() {
   echo "Exit"
   exit
   fi
-  bash /root/SecureMyServer/start.sh
+  bash /root/SecureMyServer/nxt.sh
 }
 
 continue_or_exit() {

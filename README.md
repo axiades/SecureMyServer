@@ -33,7 +33,7 @@ Login with:
 otherwise the script will throw multiple errors!
 
 Install with [git]:
-- `cd /root/; apt update; apt install git -y; git clone https://github.com/axiades/SecureMyServer.git; cd SecureMyServer; bash start.sh`
+- `cd /root/; apt update; apt install git -y; git clone https://github.com/axiades/SecureMyServer.git; cd SecureMyServer; bash nxt.sh`
 
 ## What's included
 
