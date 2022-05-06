@@ -31,7 +31,7 @@ done
 sed_replace_word() {
   var_1_clean=$(echo "$1" | sed 's/\//\\\//g')
   var_2_clean=$(echo "$2" | sed 's/\//\\\//g')
-  sed -i "s/$var_1_clean/$var_2_clean/g" $3 
+  sed -i "s/$var_1_clean/$var_2_clean/g" $3
 }
 
 setipaddrvars() {
@@ -44,8 +44,11 @@ CHECKRDNS=$(dig @1.1.1.1 -x ${IPADR} +short)
 }
 
 get_domain() {
-  LOCAL_IP=$(hostname -I)
-  POSSIBLE_DOMAIN=$(dig -x ${LOCAL_IP} +short)
+  #
+  ### need case for Ipv6 only server ###
+  #
+  LOCAL_IP=$(hostname -I | awk '{print $1;}')
+  POSSIBLE_DOMAIN=$(dig @1.1.1.1 -x ${LOCAL_IP} +short)
   DETECTED_DOMAIN=$(echo "${POSSIBLE_DOMAIN}" | awk -v FS='.' '{print $2 "." $3}')
 }
 
@@ -61,21 +64,21 @@ CHOICE=$(dialog --clear \
 }
 
 function dialog_info() {
-dialog --backtitle "Secure Installation" --infobox "$1" 40 80
+dialog --backtitle "Server Installation" --infobox "$1" 40 80
 }
 
 function dialog_msg() {
-dialog --backtitle "Secure Installation" --msgbox "$1" 40 80
+dialog --backtitle "Server Installation" --msgbox "$1" 40 80
 }
 
 function dialog_yesno_configuration() {
-dialog --backtitle "Secure Installation" \
---yesno "Continue with Secure Configuration?" 7 60
+dialog --backtitle "Server Installation" \
+--yesno "Continue with Server Configuration?" 7 60
 
 CHOICE=$?
 case $CHOICE in
    1)
-        echo "Skipped the Secure Configuration!"
+        echo "Skipped the Server Configuration!"
         exit;;
 esac
 }
@@ -132,6 +135,15 @@ DEBIAN_FRONTEND=noninteractive apt -y install $1 >>"${main_log}" 2>>"${err_log}"
     fi
 }
 
+function remove_packages() {
+DEBIAN_FRONTEND=noninteractive apt -y remove $1 >>"${main_log}" 2>>"${err_log}" || error_exit "Failed to remove $1 packages"
+        ERROR=$?
+        if [[ "$ERROR" != '0' ]]; then
+      echo "Error: $1 had an error during removing."
+      exit
+    fi
+}
+
 error_exit() {
   #clear
   read line file <<<$(caller)
@@ -146,7 +158,7 @@ error_exit() {
 
 show_login_information() {
   dialog_msg "Please save the shown login information on next page"
-  cat /root/SecureMySrv/login_information.txt
+  cat /root/SecureMyServer/login_information.txt
 }
 
 continue_to_menu() {
@@ -155,7 +167,7 @@ continue_to_menu() {
   echo "Exit"
   exit
   fi
-  bash /root/SecureMySrv/start.sh
+  bash /root/SecureMyServer/start.sh
 }
 
 continue_or_exit() {
@@ -166,13 +178,13 @@ continue_or_exit() {
   fi
 }
 
-greenb() { 
-  echo $(tput bold)$(tput setaf 2)${1}$(tput sgr0); 
+greenb() {
+  echo $(tput bold)$(tput setaf 2)${1}$(tput sgr0);
 }
 ok="$(greenb [OKAY] -)"
 
-redb() { 
-  echo $(tput bold)$(tput setaf 1)${1}$(tput sgr0); 
+redb() {
+  echo $(tput bold)$(tput setaf 1)${1}$(tput sgr0);
 }
 error="$(redb [ERROR] -)"
 
@@ -181,9 +193,9 @@ progress_gauge() {
 }
 
 kernel_check_failed() {
-LOCAL_KERNEL_VERSION=$(uname -a | awk '/Linux/ {print $(NF-7)}') 
-BACKTITLE="Secure Installation"
-TITLE="Secure Installation"
+LOCAL_KERNEL_VERSION=$(uname -a | awk '/Linux/ {print $(NF-7)}')
+BACKTITLE="Server Installation"
+TITLE="Server Installation"
 HEIGHT=15
 WIDTH=70
 
