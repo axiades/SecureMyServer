@@ -70,7 +70,7 @@ fi
 4)
 dialog_info "Updating Secure Script"
 update_script
-bash update_script.sh
+bash start.sh
 ;;
 
 5)
