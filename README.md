@@ -42,7 +42,7 @@ Kernel-Hardening
 Lite-Version is Without the Options From the Full-Version but have the Safety Includes with Kernel-Hardening, OpenSSL/SSH Hardening & Fail2Ban
 
 Install with [git]:
-- `cd /opt/; apt update; apt install git -y; git clone git@github.com:axiades/SecureMyServer.git; cd SecureMyServer; bash start.sh`
+- `cd /root/; apt update; apt install git -y; git clone https://github.com/axiades/SecureMyServer.git; cd SecureMyServer; bash start.sh`
 
 ## What's included
 
