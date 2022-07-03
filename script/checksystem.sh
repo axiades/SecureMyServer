@@ -8,9 +8,9 @@ trap error_exit ERR
 local Su_user=$(whoami)
 [ "$Su_user" != 'root' ] && error_exit "Please run the script as root user"
 
-[ $(lsb_release -is) != 'Debian' ] && [ $(lsb_release -cs) != 'buster' ] && error_exit "Please run the Script with Debian Buster"
+[ $(lsb_release -is) != 'Ubuntu' ] && [ $(lsb_release -cs) != 'Focal' ] && error_exit "Please run the Script with Ubuntu Focal"
 
-local LOCAL_KERNEL_VERSION=$(uname -a | awk '/Linux/ {print $(NF-10)}')
+local LOCAL_KERNEL_VERSION=$(uname -a | awk '/Linux/ {print $(NF-12)}')
 [ $LOCAL_KERNEL_VERSION != ${KERNEL_VERSION} ] && kernel_check_failed
 
 [ $(grep MemTotal /proc/meminfo | awk '{print $2}') -lt 512000 ] && error_exit "This script needs at least ~512MB Ram"
