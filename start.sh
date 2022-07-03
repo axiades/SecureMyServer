@@ -25,7 +25,7 @@ OPTIONS=(1 "Install Secure Version: ${GIT_LOCAL_FILES_HEAD} - ${GIT_LOCAL_FILES_
          2 "After Installation configuration"
          3 "Update Secure Script Code Base"
          4 "Services Options"
-         4 "Exit")
+         5 "Exit")
 
 CHOICE=$(dialog --clear \
                 --nocancel \
