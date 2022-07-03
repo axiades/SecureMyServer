@@ -7,7 +7,6 @@ trap error_exit ERR
 
 source /root/SecureMyServer/configs/sources.cfg
 
-TIMEZONE_DETECTED=$(wget http://ip-api.com/line/${IPADR}?fields=timezone -q -O -)
 timedatectl set-timezone Europe/Berlin
 
 sed_replace_word "Europe/Berlin" "${TIMEZONE_DETECTED}" "/root/SecureMyServer/configs/userconfig.cfg"
@@ -15,18 +14,27 @@ sed_replace_word "Europe/Berlin" "${TIMEZONE_DETECTED}" "/root/SecureMyServer/co
 rm /etc/apt/sources.list
 cat > /etc/apt/sources.list <<END
 #------------------------------------------------------------------------------#
-#                   OFFICIAL DEBIAN REPOS                                      #
+#                            OFFICIAL UBUNTU REPOS                             #
 #------------------------------------------------------------------------------#
 
-###### Debian Main Repos
-deb http://deb.debian.org/debian/ bullseye main
-deb-src http://deb.debian.org/debian/ bullseye main
 
-deb http://security.debian.org/debian-security bullseye-security main
-deb-src http://security.debian.org/debian-security bullseye-security main
+###### Ubuntu Main Repos
+deb http://de.archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse 
+deb-src http://de.archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse 
 
-deb http://deb.debian.org/debian/ bullseye-updates main
-deb-src http://deb.debian.org/debian/ bullseye-updates main
+###### Ubuntu Update Repos
+deb http://de.archive.ubuntu.com/ubuntu/ focal-security main restricted universe multiverse 
+deb http://de.archive.ubuntu.com/ubuntu/ focal-updates main restricted universe multiverse 
+deb http://de.archive.ubuntu.com/ubuntu/ focal-proposed main restricted universe multiverse 
+deb http://de.archive.ubuntu.com/ubuntu/ focal-backports main restricted universe multiverse 
+deb-src http://de.archive.ubuntu.com/ubuntu/ focal-security main restricted universe multiverse 
+deb-src http://de.archive.ubuntu.com/ubuntu/ focal-updates main restricted universe multiverse 
+deb-src http://de.archive.ubuntu.com/ubuntu/ focal-proposed main restricted universe multiverse 
+deb-src http://de.archive.ubuntu.com/ubuntu/ focal-backports main restricted universe multiverse 
+
+###### Ubuntu Security Repos
+deb http://security.ubuntu.com/ubuntu focal-security main restricted universe multiverse
+#deb-src http://security.ubuntu.com/ubuntu focal-security main restricted universe multiverse
 
 END
 
