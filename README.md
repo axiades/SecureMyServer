@@ -18,7 +18,7 @@ Minimum Required HardwareSpecs
 1 CPU Core [~2GHz]
 512MB RAM
 2GB Storage
-Debian 11.x (with all updates!)
+Ubuntu 20.04.x (with all updates!)
 root User Access
 - The will to learn something about Linux ;)
 ```
